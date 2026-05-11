@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Realify Design System</title>
+<link rel="stylesheet" href="tokens.css" />
+<style>
+  body { padding: 56px 64px 96px; }
+  .wrap { max-width: 1240px; margin: 0 auto; }
+  .head { display: flex; align-items: center; gap: 20px; }
+  .head img { height: 48px; }
+  .eyebrow { color: var(--amber); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; }
+  h1 { font-size: 44px; line-height: 1.05; margin-top: 14px; letter-spacing: -0.02em; }
+  h1 em { font-style: normal; color: var(--amber); }
+  .lede { color: var(--muted-foreground); font-size: 17px; max-width: 720px; margin-top: 16px; line-height: 1.55; }
+  .meta { margin-top: 14px; font-size: 13px; color: var(--muted-foreground); }
+  .meta b { color: var(--foreground); font-weight: 600; }
+
+  section { margin-top: 48px; }
+  .sec-h { font-family: var(--font-heading); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-foreground); font-weight: 700; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 14px; }
+  .card { display: block; background: white; border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 22px; text-decoration: none; color: inherit; transition: border-color .15s, transform .15s, box-shadow .15s; }
+  .card:hover { border-color: var(--amber); transform: translateY(-2px); box-shadow: 0 12px 24px -10px rgba(10,36,64,0.15); }
+  .card .num { font-family: ui-monospace, Menlo, monospace; font-size: 11px; color: var(--muted-foreground); }
+  .card h3 { font-family: var(--font-heading); font-weight: 700; font-size: 18px; margin-top: 6px; }
+  .card p { font-size: 13px; color: var(--muted-foreground); margin-top: 8px; line-height: 1.55; }
+  .card .arrow { color: var(--amber); margin-top: 14px; font-weight: 600; font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <img src="assets/logo.webp" alt="Realify"/>
+  </div>
+  <div class="eyebrow" style="margin-top: 18px;">Design system</div>
+  <h1>The building blocks behind <em>Realify</em>.</h1>
+  <p class="lede">A living guide to the colors, type, components and voice that ship the Realify product — AI appointment setting for Australian real-estate agents. Source of truth: the production codebase.</p>
+  <div class="meta">Source · <b>SP-getintel/realify1</b> · React 19 + TanStack Start + Tailwind v4 + shadcn/ui "new-york"</div>
+
+  <section>
+    <div class="sec-h">Foundations</div>
+    <div class="grid">
+      <a class="card" href="colors.html"><div class="num">01</div><h3>Color</h3><p>Two-tone palette: navy authority + a single amber CTA. Neutrals derived from the navy hue.</p><div class="arrow">View tokens →</div></a>
+      <a class="card" href="typography.html"><div class="num">02</div><h3>Typography</h3><p>Manrope for headings, Inter for body. The full scale plus the canonical hero treatment.</p><div class="arrow">View scale →</div></a>
+      <a class="card" href="spacing.html"><div class="num">03</div><h3>Spacing &amp; elevation</h3><p>Radius derived from 0.75rem, the spacing scale in use, section rhythm, four shadow steps.</p><div class="arrow">View tokens →</div></a>
+      <a class="card" href="voice.html"><div class="num">04</div><h3>Voice &amp; patterns</h3><p>How Realify talks to agents. Say-this / don't-say-that microcopy and the canonical hero.</p><div class="arrow">View patterns →</div></a>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-h">Components</div>
+    <div class="grid">
+      <a class="card" href="buttons.html"><div class="num">05</div><h3>Buttons</h3><p>Eight variants including Realify-specific <code>hero</code> &amp; <code>heroOutline</code>, four sizes, with-icon and disabled states.</p><div class="arrow">View buttons →</div></a>
+      <a class="card" href="cards.html"><div class="num">06</div><h3>Cards &amp; badges</h3><p>Feature, stat, conversation, pricing cards. Badge variants including status pills.</p><div class="arrow">View cards →</div></a>
+      <a class="card" href="forms.html"><div class="num">07</div><h3>Forms</h3><p>Inputs, selects, toggles, slider, OTP — all states. The canonical book-a-demo form.</p><div class="arrow">View forms →</div></a>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-h">Brand</div>
+    <div class="grid">
+      <a class="card" href="brand.html"><div class="num">08</div><h3>Logo &amp; iconography</h3><p>The Realify lockup across surfaces, clearspace, the Australia mask icon, the lucide icon set.</p><div class="arrow">View brand →</div></a>
+    </div>
+  </section>
+</div>
+</body>
+</html>

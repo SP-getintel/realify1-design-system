@@ -1,0 +1,78 @@
+/* Realify design tokens — mirrors src/styles.css from the production app.
+   Use these custom properties when building components in this design system. */
+
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  /* Type */
+  --font-heading: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Radius scale (--radius is the base, others derive from it) */
+  --radius: 0.75rem;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  /* Brand */
+  --primary: oklch(0.22 0.05 250);
+  --primary-foreground: oklch(0.98 0 0);
+  --amber: oklch(0.75 0.18 75);
+  --amber-foreground: oklch(0.22 0.05 250);
+  --navy-light: oklch(0.30 0.05 250);
+
+  /* Surfaces */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.22 0.05 250);
+  --card: oklch(0.97 0.005 250);
+  --card-foreground: oklch(0.22 0.05 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.05 250);
+  --muted: oklch(0.95 0.01 250);
+  --muted-foreground: oklch(0.45 0.03 250);
+  --accent: oklch(0.95 0.01 250);
+  --accent-foreground: oklch(0.22 0.05 250);
+  --surface: oklch(0.96 0.008 240);
+
+  /* Functional */
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.90 0.01 250);
+  --input: oklch(0.90 0.01 250);
+  --ring: oklch(0.75 0.18 75);
+
+  /* Charts (amber + 4 supporting blues) */
+  --chart-1: oklch(0.75 0.18 75);
+  --chart-2: oklch(0.55 0.15 250);
+  --chart-3: oklch(0.40 0.07 250);
+  --chart-4: oklch(0.80 0.15 80);
+  --chart-5: oklch(0.65 0.10 250);
+
+  /* Sidebar (always navy regardless of light/dark) */
+  --sidebar: oklch(0.22 0.05 250);
+  --sidebar-foreground: oklch(0.98 0 0);
+  --sidebar-primary: oklch(0.75 0.18 75);
+  --sidebar-primary-foreground: oklch(0.22 0.05 250);
+  --sidebar-accent: oklch(0.30 0.05 250);
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-border: oklch(0.35 0.04 250);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0;
+}

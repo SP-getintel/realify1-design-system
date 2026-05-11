@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Realify — Forms</title>
+<link rel="stylesheet" href="tokens.css" />
+<style>
+  body { padding: 56px 64px; }
+  .wrap { max-width: 1240px; margin: 0 auto; }
+  .eyebrow { color: var(--amber); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; }
+  h1 { font-size: 40px; line-height: 1.1; margin-top: 8px; }
+  .lede { color: var(--muted-foreground); font-size: 16px; max-width: 720px; margin-top: 12px; line-height: 1.55; }
+  section { margin-top: 48px; }
+  .sec-h { font-size: 20px; font-weight: 700; }
+  .sec-sub { color: var(--muted-foreground); font-size: 14px; margin-top: 6px; max-width: 760px; line-height: 1.5; }
+
+  /* Field primitives — mirrors shadcn input/label/textarea */
+  label.field { display: grid; gap: 6px; }
+  label.field .lbl { font-size: 13px; font-weight: 500; color: var(--foreground); }
+  label.field .help { font-size: 12px; color: var(--muted-foreground); }
+  label.field .err { font-size: 12px; color: var(--destructive); }
+  .input, .textarea, .select {
+    height: 36px; width: 100%;
+    border: 1px solid var(--input); background: var(--background);
+    border-radius: var(--radius-md);
+    padding: 0 12px; font-family: var(--font-body); font-size: 14px; color: var(--foreground);
+    box-shadow: 0 1px 2px rgba(10,36,64,0.04);
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .input::placeholder { color: var(--muted-foreground); }
+  .input:focus, .textarea:focus, .select:focus { outline: none; border-color: var(--ring); box-shadow: 0 0 0 1px var(--ring); }
+  .input.err { border-color: var(--destructive); box-shadow: 0 0 0 1px var(--destructive); }
+  .textarea { height: auto; padding: 10px 12px; resize: vertical; min-height: 96px; line-height: 1.5; }
+  .select { appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235E6B7E' stroke-width='2' stroke-linecap='round'><polyline points='6 9 12 15 18 9'/></svg>"); background-repeat: no-repeat; background-position: right 10px center; padding-right: 36px; }
+
+  /* Checkbox, switch, radio */
+  .check { width: 16px; height: 16px; border-radius: var(--radius-sm); border: 1px solid var(--input); display: inline-grid; place-items: center; background: white; }
+  .check.on { background: var(--primary); border-color: var(--primary); color: white; }
+  .row { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+  .switch { width: 36px; height: 20px; border-radius: 999px; background: var(--input); position: relative; transition: background .15s; }
+  .switch.on { background: var(--primary); }
+  .switch::after { content: ""; position: absolute; width: 14px; height: 14px; top: 3px; left: 3px; background: white; border-radius: 50%; transition: left .15s; box-shadow: 0 1px 2px rgba(10,36,64,0.20); }
+  .switch.on::after { left: 19px; }
+  .radio { width: 16px; height: 16px; border-radius: 50%; border: 1px solid var(--input); display: inline-grid; place-items: center; background: white; }
+  .radio.on { border-color: var(--primary); }
+  .radio.on::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--primary); }
+
+  /* Slider */
+  .slider { height: 6px; background: var(--muted); border-radius: 999px; position: relative; }
+  .slider .fill { height: 100%; background: var(--primary); border-radius: 999px; width: 62%; }
+  .slider .thumb { position: absolute; width: 18px; height: 18px; border-radius: 50%; background: white; border: 2px solid var(--primary); top: -6px; left: calc(62% - 9px); box-shadow: 0 2px 6px rgba(10,36,64,0.20); }
+
+  /* Layouts */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .panel { background: white; border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 28px; box-shadow: 0 1px 3px rgba(10,36,64,0.04); }
+  .panel h3 { font-family: var(--font-heading); font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+  .panel .desc { color: var(--muted-foreground); font-size: 13px; margin-bottom: 18px; line-height: 1.5; }
+  .stack { display: grid; gap: 14px; }
+  .twoup { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: var(--radius-md); font-family: var(--font-body); font-size: 14px; font-weight: 500; cursor: pointer; border: 1px solid transparent; height: 36px; padding: 0 16px; }
+  .btn-hero { background: var(--amber); color: var(--amber-foreground); font-weight: 600; box-shadow: 0 6px 16px -6px rgba(245,158,11,0.55); }
+  .btn-outline { border-color: var(--border); background: white; color: var(--foreground); }
+
+  /* OTP */
+  .otp { display: flex; gap: 8px; }
+  .otp .cell { width: 40px; height: 48px; border: 1px solid var(--input); border-radius: var(--radius-md); display: grid; place-items: center; font-family: var(--font-heading); font-weight: 700; font-size: 20px; background: white; }
+  .otp .cell.active { border-color: var(--ring); box-shadow: 0 0 0 1px var(--ring); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Components</div>
+  <h1>Forms</h1>
+  <p class="lede">All inputs share the same height (36px), radius (<code>--radius-md</code>), and amber focus ring. Labels sit on top, helper text below; errors recolor the border and message in <code>--destructive</code> with no extra iconography.</p>
+
+  <section>
+    <div class="sec-h">Book-a-demo form (canonical)</div>
+    <p class="sec-sub">Mirrors the production <code>/book-demo</code> route. Two-column on desktop, full bleed on mobile.</p>
+    <div class="panel" style="max-width: 720px;">
+      <h3>Book a live demo</h3>
+      <p class="desc">15 minutes. We'll show how Realify replies to your leads — using your actual lead-list.</p>
+      <div class="stack">
+        <div class="twoup">
+          <label class="field"><span class="lbl">First name</span><input class="input" value="Maya" /></label>
+          <label class="field"><span class="lbl">Last name</span><input class="input" value="Whitcombe" /></label>
+        </div>
+        <label class="field"><span class="lbl">Work email</span><input class="input" value="maya@northstarrealty.com.au" /></label>
+        <div class="twoup">
+          <label class="field"><span class="lbl">Agency</span><input class="input" placeholder="North Star Realty" /></label>
+          <label class="field"><span class="lbl">Team size</span>
+            <select class="select"><option>1–4 agents</option><option selected>5–15 agents</option><option>16–50 agents</option><option>50+</option></select>
+          </label>
+        </div>
+        <label class="field"><span class="lbl">What's the biggest leak in your funnel?</span><textarea class="textarea">Stale leads in our CRM &mdash; ~8k contacts we haven't touched in 12+ months.</textarea><span class="help">Optional. Helps us tailor the demo.</span></label>
+        <div class="row" style="margin-top: 4px;"><span class="check on"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Send me the post-demo recap and lead-conversion benchmark report.</span></div>
+        <div style="display:flex; gap: 10px; margin-top: 10px;">
+          <button class="btn btn-hero">Book my demo</button>
+          <button class="btn btn-outline">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-h">States</div>
+    <p class="sec-sub">Resting · focused · filled · disabled · error.</p>
+    <div class="grid2" style="margin-top: 16px;">
+      <div class="stack">
+        <label class="field"><span class="lbl">Resting</span><input class="input" placeholder="jane@agency.com.au" /></label>
+        <label class="field"><span class="lbl">Focused</span><input class="input" placeholder="jane@agency.com.au" style="border-color: var(--ring); box-shadow: 0 0 0 1px var(--ring);" /></label>
+        <label class="field"><span class="lbl">Filled</span><input class="input" value="jane@agency.com.au" /></label>
+      </div>
+      <div class="stack">
+        <label class="field"><span class="lbl">Disabled</span><input class="input" value="locked@agency.com.au" disabled style="opacity: 0.5; background: var(--muted);" /></label>
+        <label class="field"><span class="lbl">Error</span><input class="input err" value="not-an-email" /><span class="err">Enter a valid work email — gmail.com is not supported.</span></label>
+        <label class="field"><span class="lbl">With helper</span><input class="input" value="04 1234 5678" /><span class="help">We'll only call to confirm your demo time.</span></label>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-h">Controls</div>
+    <p class="sec-sub">Checkbox · radio · switch · slider · OTP. All snap to the amber ring on focus.</p>
+    <div class="grid2" style="margin-top: 16px;">
+      <div class="panel">
+        <h3>Toggles</h3>
+        <p class="desc">Used on settings cards in the agent portal.</p>
+        <div class="stack">
+          <div class="row"><span class="check on"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span> Auto-reply to new web enquiries</div>
+          <div class="row"><span class="check"></span> Send weekly performance digest</div>
+          <div class="row"><span class="radio on"></span> SMS first, email follow-up</div>
+          <div class="row"><span class="radio"></span> Email only</div>
+          <div class="row"><span class="switch on"></span> Pause sequences on weekends</div>
+          <div class="row"><span class="switch"></span> Notify me when an appointment books</div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Slider &amp; OTP</h3>
+        <p class="desc">Slider thumb uses the navy ring; OTP cells light up amber on focus.</p>
+        <div class="stack">
+          <div>
+            <div style="display: flex; justify-content: space-between; font-size: 13px;"><span>Daily SMS cap per lead</span><b>3</b></div>
+            <div class="slider" style="margin-top: 14px;"><div class="fill"></div><div class="thumb"></div></div>
+            <div style="display:flex; justify-content: space-between; font-size: 11px; color: var(--muted-foreground); margin-top: 8px;"><span>0</span><span>5</span></div>
+          </div>
+          <div style="margin-top: 10px;">
+            <div style="font-size: 13px; margin-bottom: 10px;">Verify your phone</div>
+            <div class="otp">
+              <div class="cell">4</div><div class="cell">2</div><div class="cell">9</div>
+              <div class="cell active">|</div><div class="cell"></div><div class="cell"></div>
+            </div>
+            <div style="font-size: 12px; color: var(--muted-foreground); margin-top: 10px;">Code sent to ending ••76 · <span style="color: var(--primary); font-weight: 600;">Resend</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Realify — Buttons</title>
+<link rel="stylesheet" href="tokens.css" />
+<style>
+  body { padding: 56px 64px; }
+  .wrap { max-width: 1240px; margin: 0 auto; }
+  .eyebrow { color: var(--amber); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; }
+  h1 { font-size: 40px; line-height: 1.1; margin-top: 8px; }
+  .lede { color: var(--muted-foreground); font-size: 16px; max-width: 720px; margin-top: 12px; line-height: 1.55; }
+  section { margin-top: 48px; }
+  .sec-h { font-size: 20px; font-weight: 700; }
+  .sec-sub { color: var(--muted-foreground); font-size: 14px; margin-top: 6px; max-width: 760px; line-height: 1.5; }
+
+  /* Button (mirrors src/components/ui/button.tsx exactly) */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    white-space: nowrap; border-radius: var(--radius-md);
+    font-family: var(--font-body); font-size: 14px; font-weight: 500;
+    transition: background-color .15s, color .15s, filter .15s, border-color .15s;
+    border: 1px solid transparent; cursor: pointer; user-select: none;
+  }
+  .btn .ic { width: 16px; height: 16px; flex: none; }
+  .btn:focus-visible { outline: 1px solid var(--ring); outline-offset: 2px; }
+  .btn:disabled, .btn[aria-disabled="true"] { opacity: 0.5; pointer-events: none; }
+
+  .size-default { height: 36px; padding: 0 16px; }
+  .size-sm { height: 32px; padding: 0 12px; font-size: 12px; border-radius: var(--radius-sm); }
+  .size-lg { height: 40px; padding: 0 32px; }
+  .size-icon { height: 36px; width: 36px; padding: 0; }
+
+  .v-default { background: var(--primary); color: var(--primary-foreground); box-shadow: 0 1px 2px rgba(10,36,64,0.10); }
+  .v-default:hover { background: color-mix(in oklch, var(--primary) 90%, transparent); }
+  .v-destructive { background: var(--destructive); color: var(--destructive-foreground); box-shadow: 0 1px 2px rgba(220,38,38,0.20); }
+  .v-outline { border-color: var(--input); background: var(--background); color: var(--foreground); box-shadow: 0 1px 2px rgba(10,36,64,0.04); }
+  .v-outline:hover { background: var(--accent); color: var(--accent-foreground); }
+  .v-secondary { background: var(--amber); color: var(--amber-foreground); box-shadow: 0 1px 2px rgba(245,158,11,0.18); }
+  .v-secondary:hover { filter: brightness(0.95); }
+  .v-ghost { background: transparent; color: var(--foreground); }
+  .v-ghost:hover { background: var(--accent); }
+  .v-link { background: transparent; color: var(--primary); text-underline-offset: 4px; padding: 0 4px; height: auto; }
+  .v-link:hover { text-decoration: underline; }
+  .v-hero { background: var(--amber); color: var(--amber-foreground); font-weight: 600; box-shadow: 0 10px 24px -8px rgba(245,158,11,0.55), 0 4px 8px -4px rgba(10,36,64,0.10); }
+  .v-hero:hover { filter: brightness(1.1); }
+  .v-heroOutline { border: 2px solid var(--amber); background: transparent; color: var(--amber); font-weight: 600; }
+  .v-heroOutline:hover { background: var(--amber); color: var(--amber-foreground); }
+
+  /* Layout */
+  .grid { display: grid; gap: 20px; }
+  .variants { grid-template-columns: 180px 1fr; align-items: center; }
+  .variants .label { color: var(--muted-foreground); font-family: ui-monospace, Menlo, monospace; font-size: 12px; }
+  .row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+  /* In-context cards */
+  .stage { background: var(--primary); border-radius: var(--radius-xl); padding: 48px; color: white; position: relative; overflow: hidden; }
+  .stage .eb { color: var(--amber); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .stage h3 { font-family: var(--font-heading); font-weight: 800; font-size: 36px; line-height: 1.15; margin-top: 8px; max-width: 520px; }
+  .stage h3 em { font-style: normal; color: var(--amber); }
+  .stage p { color: rgba(255,255,255,0.75); margin-top: 12px; max-width: 460px; font-size: 14px; line-height: 1.55; }
+  .stage .ctas { margin-top: 22px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .grid-bg { position:absolute; inset:0; opacity: 0.04; background-image: linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+
+  .note { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 16px 18px; font-size: 13px; color: var(--muted-foreground); line-height: 1.55; }
+  .note b { color: var(--foreground); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Components</div>
+  <h1>Buttons</h1>
+  <p class="lede">Eight variants. Six come from shadcn defaults; two — <code>hero</code> and <code>heroOutline</code> — are Realify-specific and own every page-level CTA. Sizes are <code>sm</code> · <code>default</code> · <code>lg</code> · <code>icon</code>.</p>
+
+  <section>
+    <div class="sec-h">In context</div>
+    <p class="sec-sub">The signature pairing on every marketing surface: amber <code>hero</code> + amber-outline <code>heroOutline</code>, both at <code>size="lg"</code>, side-by-side on navy.</p>
+    <div class="stage">
+      <div class="grid-bg"></div>
+      <div class="eb">AI-Powered Appointment Setting</div>
+      <h3>Turn leads into new listings — <em>automatically</em>.</h3>
+      <p>Realify reactivates your database, responds to enquiries instantly, and books appointments straight into your calendar.</p>
+      <div class="ctas">
+        <button class="btn size-lg v-hero">Book a Live Demo</button>
+        <button class="btn size-lg v-heroOutline">See How It Works</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-h">Variants</div>
+    <div class="grid variants">
+      <div class="label">hero</div>
+      <div class="row">
+        <button class="btn size-sm v-hero">Book demo</button>
+        <button class="btn size-default v-hero">Book a Demo</button>
+        <button class="btn size-lg v-hero">Book a Live Demo</button>
+      </div>
+
+      <div class="label">heroOutline</div>
+      <div style="background: var(--primary); border-radius: var(--radius-md); padding: 16px;"><div class="row">
+        <button class="btn size-sm v-heroOutline">See how</button>
+        <button class="btn size-default v-heroOutline">See How It Works</button>
+        <button class="btn size-lg v-heroOutline">See How It Works</button>
+      </div></div>
+
+      <div class="label">default</div>
+      <div class="row">
+        <button class="btn size-sm v-default">Save</button>
+        <button class="btn size-default v-default">Save changes</button>
+        <button class="btn size-lg v-default">Save changes</button>
+      </div>
+
+      <div class="label">secondary</div>
+      <div class="row">
+        <button class="btn size-default v-secondary">Upgrade</button>
+        <button class="btn size-default v-secondary">Continue</button>
+      </div>
+
+      <div class="label">outline</div>
+      <div class="row">
+        <button class="btn size-default v-outline">Cancel</button>
+        <button class="btn size-default v-outline">Export CSV</button>
+      </div>
+
+      <div class="label">ghost</div>
+      <div class="row">
+        <button class="btn size-default v-ghost">Skip</button>
+        <button class="btn size-icon v-ghost" aria-label="Menu"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg></button>
+      </div>
+
+      <div class="label">destructive</div>
+      <div class="row">
+        <button class="btn size-default v-destructive">Delete account</button>
+      </div>
+
+      <div class="label">link</div>
+      <div class="row">
+        <button class="btn v-link">Learn more →</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-h">With icons &amp; states</div>
+    <p class="sec-sub">Icons are <b>lucide-react</b>, sized to <code>size-4</code> (16px), set to <code>currentColor</code>. Disabled = 50% opacity.</p>
+    <div class="row" style="margin-top: 16px;">
+      <button class="btn size-lg v-hero">
+        <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3v18l15-9z"/></svg>
+        Watch demo
+      </button>
+      <button class="btn size-default v-default">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        New conversation
+      </button>
+      <button class="btn size-default v-outline">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Export CSV
+      </button>
+      <button class="btn size-default v-ghost" aria-disabled="true">Disabled</button>
+      <button class="btn size-default v-secondary"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg> Upgrade plan</button>
+    </div>
+  </section>
+
+  <section>
+    <div class="note"><b>Recipe</b> · <code>&lt;Button variant="hero" size="lg" asChild&gt;&lt;Link to="/book-demo"&gt;Book a Live Demo&lt;/Link&gt;&lt;/Button&gt;</code> — the production marketing pattern. <code>asChild</code> defers to TanStack Router's <code>&lt;Link&gt;</code> for client-side nav.</div>
+  </section>
+</div>
+</body>
+</html>

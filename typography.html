@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Realify — Typography</title>
+<link rel="stylesheet" href="tokens.css" />
+<style>
+  body { padding: 56px 64px; }
+  .wrap { max-width: 1240px; margin: 0 auto; }
+  .eyebrow { color: var(--amber); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; }
+  h1 { font-size: 40px; line-height: 1.1; margin-top: 8px; }
+  .lede { color: var(--muted-foreground); font-size: 16px; max-width: 640px; margin-top: 12px; line-height: 1.55; }
+  section { margin-top: 56px; }
+  .sec-h { font-size: 22px; font-weight: 700; }
+  .sec-sub { color: var(--muted-foreground); font-size: 14px; margin-top: 6px; max-width: 720px; line-height: 1.5; }
+
+  .families { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
+  .fam { border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 28px 32px; background: white; }
+  .fam .role { color: var(--amber); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .fam .name { font-size: 56px; line-height: 1; margin-top: 8px; }
+  .fam .name.h { font-family: var(--font-heading); font-weight: 800; letter-spacing: -0.02em; }
+  .fam .name.b { font-family: var(--font-body); font-weight: 500; letter-spacing: -0.01em; }
+  .fam .glyphs { font-size: 18px; margin-top: 18px; color: var(--muted-foreground); letter-spacing: 0.02em; }
+  .fam .weights { display: flex; gap: 16px; margin-top: 18px; font-size: 13px; flex-wrap: wrap; }
+  .fam .weights span { padding: 6px 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); }
+
+  /* Scale */
+  .scale { border: 1px solid var(--border); border-radius: var(--radius-xl); margin-top: 24px; overflow: hidden; }
+  .row { display: grid; grid-template-columns: 100px 1fr 240px; align-items: baseline; padding: 18px 24px; border-bottom: 1px solid var(--border); gap: 24px; }
+  .row:last-child { border-bottom: 0; }
+  .row .tag { font-family: ui-monospace, Menlo, monospace; font-size: 11px; color: var(--muted-foreground); }
+  .row .spec { font-family: ui-monospace, Menlo, monospace; font-size: 11px; color: var(--muted-foreground); text-align: right; }
+  .h1 { font-family: var(--font-heading); font-weight: 800; font-size: 60px; line-height: 1.05; letter-spacing: -0.02em; }
+  .h2 { font-family: var(--font-heading); font-weight: 700; font-size: 40px; line-height: 1.1; letter-spacing: -0.015em; }
+  .h3 { font-family: var(--font-heading); font-weight: 700; font-size: 28px; line-height: 1.2; }
+  .h4 { font-family: var(--font-heading); font-weight: 700; font-size: 20px; line-height: 1.3; }
+  .lead { font-family: var(--font-body); font-weight: 400; font-size: 18px; line-height: 1.55; color: var(--muted-foreground); }
+  .body { font-family: var(--font-body); font-weight: 400; font-size: 15px; line-height: 1.6; }
+  .small { font-family: var(--font-body); font-weight: 400; font-size: 13px; line-height: 1.5; color: var(--muted-foreground); }
+  .eb { font-family: var(--font-body); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--amber); }
+
+  /* Hero treatment */
+  .hero-card { background: var(--primary); color: var(--primary-foreground); border-radius: var(--radius-xl); padding: 48px; margin-top: 24px; position: relative; overflow: hidden; }
+  .hero-card .eb2 { color: var(--amber); font-family: var(--font-body); font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .hero-card h2 { font-family: var(--font-heading); font-weight: 800; font-size: 56px; line-height: 1.1; letter-spacing: -0.02em; margin-top: 10px; max-width: 760px; }
+  .hero-card h2 em { font-style: normal; color: var(--amber); }
+  .hero-card p { font-family: var(--font-body); font-weight: 400; font-size: 17px; line-height: 1.55; color: rgba(255,255,255,0.75); max-width: 540px; margin-top: 16px; }
+  .grid-bg { position:absolute; inset:0; opacity: 0.04; background-image: linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Foundations</div>
+  <h1>Typography</h1>
+  <p class="lede">Two families, both Google Fonts, both grotesque sans. Manrope handles every heading and brand moment; Inter handles every word longer than a button. Tight letter-spacing on headings sells the "engineered, not flashy" tone.</p>
+
+  <section>
+    <div class="sec-h">Families</div>
+    <p class="sec-sub">Manrope sits a touch tighter than Inter at the same nominal size — pair them in the documented hierarchy and they read like one voice.</p>
+    <div class="families">
+      <div class="fam">
+        <div class="role">Heading · Manrope</div>
+        <div class="name h">Realify</div>
+        <div class="glyphs">Aa Bb Cc 0123 — “Book a demo”</div>
+        <div class="weights">
+          <span style="font-family: var(--font-heading); font-weight: 400;">400 Regular</span>
+          <span style="font-family: var(--font-heading); font-weight: 600;">600 Semibold</span>
+          <span style="font-family: var(--font-heading); font-weight: 700;">700 Bold</span>
+          <span style="font-family: var(--font-heading); font-weight: 800;">800 Extrabold</span>
+        </div>
+      </div>
+      <div class="fam">
+        <div class="role">Body · Inter</div>
+        <div class="name b">Realify</div>
+        <div class="glyphs">Aa Bb Cc 0123 — “Reactivate your database”</div>
+        <div class="weights">
+          <span style="font-family: var(--font-body); font-weight: 400;">400 Regular</span>
+          <span style="font-family: var(--font-body); font-weight: 500;">500 Medium</span>
+          <span style="font-family: var(--font-body); font-weight: 600;">600 Semibold</span>
+          <span style="font-family: var(--font-body); font-weight: 700;">700 Bold</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-h">Scale</div>
+    <p class="sec-sub">Headings climb a 1.4×–1.5× ratio. Below body the scale collapses fast — Realify is text-heavy at the top, dense and utilitarian at the bottom.</p>
+    <div class="scale">
+      <div class="row"><div class="tag">eyebrow</div><div class="eb">AI-Powered Appointment Setting</div><div class="spec">Inter · 600 · 12/1.5 · UPPER 0.08em · amber</div></div>
+      <div class="row"><div class="tag">h1 / display</div><div class="h1">Turn leads into new listings.</div><div class="spec">Manrope · 800 · 60/1.05 · -0.02em</div></div>
+      <div class="row"><div class="tag">h2</div><div class="h2">The AI layer that converts.</div><div class="spec">Manrope · 700 · 40/1.1 · -0.015em</div></div>
+      <div class="row"><div class="tag">h3</div><div class="h3">Reactivate your database</div><div class="spec">Manrope · 700 · 28/1.2</div></div>
+      <div class="row"><div class="tag">h4</div><div class="h4">Conversation summary</div><div class="spec">Manrope · 700 · 20/1.3</div></div>
+      <div class="row"><div class="tag">lead</div><div class="lead">Realify installs an AI-powered system that reactivates your database and books qualified appointments straight into your calendar.</div><div class="spec">Inter · 400 · 18/1.55 · muted</div></div>
+      <div class="row"><div class="tag">body</div><div class="body">From cold-lead reactivation to instant enquiry response, every conversation is captured, scored, and routed to the agent best placed to win the listing.</div><div class="spec">Inter · 400 · 15/1.6</div></div>
+      <div class="row"><div class="tag">small / caption</div><div class="small">48 leads qualified · Last 7 days</div><div class="spec">Inter · 400 · 13/1.5 · muted</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-h">Hero treatment</div>
+    <p class="sec-sub">The signature Realify text moment — a long Manrope-extrabold headline with one amber word, lifted off a navy field flecked with a faint grid. Reuse exactly.</p>
+    <div class="hero-card">
+      <div class="grid-bg"></div>
+      <div class="eb2">AI-Powered Appointment Setting</div>
+      <h2>Turn your leads into new listings — <em>automatically</em>.</h2>
+      <p>Realify reactivates your database, responds to new enquiries instantly, and books qualified appointments straight into your calendar.</p>
+    </div>
+  </section>
+</div>
+</body>
+</html>

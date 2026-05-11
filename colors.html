@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Realify — Color tokens</title>
+<link rel="stylesheet" href="tokens.css" />
+<style>
+  body { padding: 56px 64px; }
+  .wrap { max-width: 1240px; margin: 0 auto; }
+  .eyebrow { color: var(--amber); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; }
+  h1 { font-size: 40px; line-height: 1.1; margin-top: 8px; }
+  .lede { color: var(--muted-foreground); font-size: 16px; max-width: 640px; margin-top: 12px; line-height: 1.55; }
+
+  section { margin-top: 56px; }
+  h2 { font-size: 22px; font-weight: 700; }
+  .h2-sub { color: var(--muted-foreground); font-size: 14px; margin-top: 6px; max-width: 720px; line-height: 1.5; }
+
+  /* Brand stack */
+  .brand-row { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; margin-top: 24px; }
+  .swatch { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); background: white; display: flex; flex-direction: column; }
+  .swatch .chip { height: 132px; position: relative; }
+  .swatch .meta { padding: 14px 16px 16px; }
+  .swatch .name { font-family: var(--font-heading); font-weight: 700; font-size: 14px; }
+  .swatch .role { font-size: 11px; color: var(--muted-foreground); margin-top: 2px; }
+  .swatch .codes { margin-top: 10px; display: grid; gap: 3px; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 10.5px; color: var(--muted-foreground); }
+  .swatch .codes b { color: var(--foreground); font-weight: 500; }
+  .swatch .pill { position: absolute; top: 12px; left: 12px; background: rgba(255,255,255,0.85); color: var(--foreground); font-family: var(--font-heading); font-weight: 700; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 8px; border-radius: 999px; }
+  .swatch.dark .pill { background: rgba(10,36,64,0.55); color: white; }
+
+  .span-4 { grid-column: span 4; }
+  .span-3 { grid-column: span 3; }
+  .span-2 { grid-column: span 2; }
+
+  /* Pairing demo */
+  .pairs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+  .pair { border-radius: var(--radius-lg); padding: 28px; min-height: 180px; display: flex; flex-direction: column; justify-content: space-between; }
+  .pair .label { font-family: var(--font-heading); font-weight: 700; font-size: 13px; }
+  .pair .demo { font-family: var(--font-heading); font-weight: 800; font-size: 26px; line-height: 1.15; }
+  .pair .demo em { font-style: normal; color: var(--amber); }
+  .pair .note { font-size: 12px; opacity: 0.7; }
+
+  /* Functional row */
+  .func { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 24px; }
+  .func .swatch .chip { height: 84px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Foundations</div>
+  <h1>Color</h1>
+  <p class="lede">A two-tone palette: deep navy carries authority, a single amber owns every CTA and conversion moment. Neutrals are derived from the navy hue (250°) so surfaces always feel cool, never gray-dead.</p>
+
+  <section>
+    <h2>Brand</h2>
+    <p class="h2-sub">Use navy for primary surfaces and dense UI. Reserve amber for one moment per frame — never two ambers competing.</p>
+    <div class="brand-row">
+      <div class="swatch dark span-4">
+        <div class="chip" style="background: var(--primary);"><span class="pill">Primary · navy</span></div>
+        <div class="meta">
+          <div class="name">Primary navy</div>
+          <div class="role">Hero, footer, sidebar, primary buttons</div>
+          <div class="codes"><div>token <b>--primary</b></div><div>oklch <b>0.22 0.05 250</b></div><div>hex ≈ <b>#0A2440</b></div></div>
+        </div>
+      </div>
+      <div class="swatch span-4">
+        <div class="chip" style="background: var(--amber);"><span class="pill">Amber · CTA</span></div>
+        <div class="meta">
+          <div class="name">Amber</div>
+          <div class="role">Single CTA color. Focus ring. Brand arrow.</div>
+          <div class="codes"><div>token <b>--amber</b></div><div>oklch <b>0.75 0.18 75</b></div><div>hex ≈ <b>#F59E0B</b></div></div>
+        </div>
+      </div>
+      <div class="swatch dark span-4">
+        <div class="chip" style="background: var(--navy-light);"><span class="pill">Navy · elevated</span></div>
+        <div class="meta">
+          <div class="name">Navy light</div>
+          <div class="role">Hover on navy, sidebar accent, second-tier dark surface</div>
+          <div class="codes"><div>token <b>--navy-light</b></div><div>oklch <b>0.30 0.05 250</b></div><div>hex ≈ <b>#16335A</b></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Pairings</h2>
+    <p class="h2-sub">The only three combinations that should appear in product. Amber on muted or amber on amber-foreground is off-system.</p>
+    <div class="pairs">
+      <div class="pair" style="background: var(--primary); color: var(--primary-foreground);">
+        <div class="label" style="color: var(--amber);">NAVY + AMBER ACCENT</div>
+        <div class="demo">Turn leads into new listings — <em>automatically</em></div>
+        <div class="note">Default hero pattern</div>
+      </div>
+      <div class="pair" style="background: var(--amber); color: var(--amber-foreground);">
+        <div class="label">AMBER FILL + NAVY TEXT</div>
+        <div class="demo">Book a Demo</div>
+        <div class="note">Primary CTA, badges, conversion moments</div>
+      </div>
+      <div class="pair" style="background: var(--background); color: var(--foreground); border: 1px solid var(--border);">
+        <div class="label" style="color: var(--amber);">WHITE + NAVY TEXT</div>
+        <div class="demo">48 leads qualified today</div>
+        <div class="note">Default body surface — amber used only as eyebrow / accent</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Surfaces &amp; neutrals</h2>
+    <p class="h2-sub">All neutrals share the navy hue (250°) at low chroma. Avoid pulling in any other gray.</p>
+    <div class="brand-row">
+      <div class="swatch span-3">
+        <div class="chip" style="background: var(--background); border-bottom: 1px solid var(--border);"><span class="pill">bg</span></div>
+        <div class="meta"><div class="name">Background</div><div class="role">Page surface</div><div class="codes"><div><b>--background</b></div><div>oklch <b>1 0 0</b></div></div></div>
+      </div>
+      <div class="swatch span-3">
+        <div class="chip" style="background: var(--card); border-bottom: 1px solid var(--border);"><span class="pill">card</span></div>
+        <div class="meta"><div class="name">Card</div><div class="role">Card on white</div><div class="codes"><div><b>--card</b></div><div>oklch <b>0.97 0.005 250</b></div></div></div>
+      </div>
+      <div class="swatch span-3">
+        <div class="chip" style="background: var(--muted); border-bottom: 1px solid var(--border);"><span class="pill">muted</span></div>
+        <div class="meta"><div class="name">Muted</div><div class="role">Skeleton, subtle fills</div><div class="codes"><div><b>--muted</b></div><div>oklch <b>0.95 0.01 250</b></div></div></div>
+      </div>
+      <div class="swatch span-3">
+        <div class="chip" style="background: var(--surface); border-bottom: 1px solid var(--border);"><span class="pill">surface</span></div>
+        <div class="meta"><div class="name">Surface</div><div class="role">Section bands, second-level fill</div><div class="codes"><div><b>--surface</b></div><div>oklch <b>0.96 0.008 240</b></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Functional &amp; chart</h2>
+    <p class="h2-sub">Destructive is errors only. Chart series lead with amber, then descend through the navy family.</p>
+    <div class="func">
+      <div class="swatch">
+        <div class="chip" style="background: var(--muted-foreground);"></div>
+        <div class="meta"><div class="name">Muted foreground</div><div class="codes"><div><b>--muted-foreground</b></div></div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background: var(--border);"></div>
+        <div class="meta"><div class="name">Border / Input</div><div class="codes"><div><b>--border</b></div></div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background: var(--ring); outline: 2px solid var(--amber); outline-offset: -6px;"></div>
+        <div class="meta"><div class="name">Ring</div><div class="role">Focus = amber</div><div class="codes"><div><b>--ring</b></div></div></div>
+      </div>
+      <div class="swatch dark">
+        <div class="chip" style="background: var(--destructive);"></div>
+        <div class="meta"><div class="name">Destructive</div><div class="role">Errors only</div><div class="codes"><div><b>--destructive</b></div></div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background: linear-gradient(90deg, var(--chart-1) 0 20%, var(--chart-2) 20% 40%, var(--chart-3) 40% 60%, var(--chart-4) 60% 80%, var(--chart-5) 80% 100%);"></div>
+        <div class="meta"><div class="name">Chart series</div><div class="role">--chart-1 → --chart-5</div></div>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
