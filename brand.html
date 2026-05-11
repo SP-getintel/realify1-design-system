@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Realify — Logo &amp; iconography</title>
+<link rel="stylesheet" href="tokens.css" />
+<style>
+  body { padding: 56px 64px; }
+  .wrap { max-width: 1240px; margin: 0 auto; }
+  .eyebrow { color: var(--amber); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; }
+  h1 { font-size: 40px; line-height: 1.1; margin-top: 8px; }
+  .lede { color: var(--muted-foreground); font-size: 16px; max-width: 720px; margin-top: 12px; line-height: 1.55; }
+  section { margin-top: 48px; }
+  .sec-h { font-size: 20px; font-weight: 700; }
+  .sec-sub { color: var(--muted-foreground); font-size: 14px; margin-top: 6px; max-width: 760px; line-height: 1.5; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 24px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 24px; }
+  .grid6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; margin-top: 24px; }
+  .tile { border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; background: white; display: flex; align-items: center; justify-content: center; min-height: 160px; position: relative; }
+  .tile.dark { background: var(--primary); border-color: transparent; }
+  .tile.amber { background: var(--amber); border-color: transparent; }
+  .tile img.logo { height: 56px; width: auto; }
+  .tile.dark img.logo { filter: brightness(0) invert(1); }
+  .tile .pill { position: absolute; top: 10px; left: 12px; font-family: var(--font-heading); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; padding: 3px 8px; border-radius: 999px; background: rgba(0,0,0,0.06); color: var(--muted-foreground); }
+  .tile.dark .pill { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.75); }
+  .tile.amber .pill { background: rgba(10,36,64,0.18); color: var(--primary); }
+  .meta { font-size: 12px; color: var(--muted-foreground); margin-top: 8px; }
+
+  /* Clearspace demo */
+  .cs-stage { background: var(--card); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 40px; position: relative; }
+  .cs-stage .ring { display: inline-block; padding: 28px; outline: 1px dashed var(--amber); outline-offset: 0; border-radius: 4px; }
+  .cs-stage img { display: block; height: 60px; }
+  .cs-note { margin-top: 14px; font-size: 12px; color: var(--muted-foreground); }
+
+  /* Australia icon */
+  .au {
+    display: inline-block;
+    background-color: currentColor;
+    -webkit-mask: url("assets/australia-outline.png") center / contain no-repeat;
+            mask: url("assets/australia-outline.png") center / contain no-repeat;
+    width: 88px; height: 80px;
+  }
+  .au.sm { width: 22px; height: 20px; }
+  .au.md { width: 44px; height: 40px; }
+  .au.lg { width: 132px; height: 120px; }
+
+  /* Icon grid */
+  .ic { width: 28px; height: 28px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .ic-row { display: grid; grid-template-columns: repeat(8, 1fr); gap: 12px; margin-top: 16px; }
+  .ic-cell { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 16px 8px; border: 1px solid var(--border); border-radius: var(--radius-md); color: var(--primary); background: white; }
+  .ic-cell .nm { font-size: 11px; color: var(--muted-foreground); font-family: ui-monospace, Menlo, monospace; }
+
+  .badge-pair { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 10px; background: var(--primary); color: white; border-radius: 999px; font-size: 13px; font-weight: 500; }
+  .badge-pair .au { width: 18px; height: 16px; color: var(--amber); }
+
+  .donts { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 6px; margin-top: 20px; }
+  .donts .row { display: grid; grid-template-columns: 1fr 1fr 1fr; }
+  .donts .cell { padding: 28px 24px; display: flex; flex-direction: column; align-items: center; gap: 12px; position: relative; }
+  .donts .cell + .cell { border-left: 1px solid var(--border); }
+  .donts .tag { font-family: var(--font-heading); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; padding: 3px 8px; border-radius: 999px; }
+  .donts .tag.dont { background: oklch(0.92 0.05 25); color: var(--destructive); }
+  .donts .cell .what { font-size: 12px; color: var(--muted-foreground); text-align: center; max-width: 200px; line-height: 1.5; }
+  .donts .cell .demo { padding: 14px 18px; background: var(--background); border-radius: var(--radius-md); border: 1px dashed var(--border); }
+  .donts .cell .demo img { height: 40px; }
+  .donts .stretch img { transform: scaleY(1.6); transform-origin: center; }
+  .donts .recolor img { filter: hue-rotate(120deg) saturate(1.3); }
+  .donts .lowbg { background: oklch(0.85 0.15 75); padding: 14px 18px; border-radius: var(--radius-md); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Brand</div>
+  <h1>Logo &amp; iconography</h1>
+  <p class="lede">The Realify mark is a lockup — a house silhouette + amber rising arrow + the wordmark in Manrope-bold navy. Never split the icon from the wordmark in product surfaces. For geography (Australia-only), the Realify Australia silhouette is rendered via CSS mask so it inherits <code>currentColor</code>.</p>
+
+  <section>
+    <div class="sec-h">Lockup &amp; backgrounds</div>
+    <p class="sec-sub">Primary lockup on white. Inverted (white) lockup on navy or amber via <code>filter: brightness(0) invert(1)</code>. Don't recolor the house or arrow individually.</p>
+    <div class="grid3">
+      <div>
+        <div class="tile"><span class="pill">Primary · white</span><img class="logo" src="assets/logo.webp" alt="Realify"/></div>
+        <div class="meta">Marketing site, body content, light app surfaces.</div>
+      </div>
+      <div>
+        <div class="tile dark"><span class="pill">Inverted · navy</span><img class="logo" src="assets/logo.webp" alt="Realify"/></div>
+        <div class="meta">Footer, hero, sidebar, dark email templates.</div>
+      </div>
+      <div>
+        <div class="tile amber"><span class="pill">Inverted · amber</span><img class="logo" src="assets/logo.webp" alt="Realify"/></div>
+        <div class="meta">Rare — reserve for high-impact moments (launch banner, swag).</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-h">Clearspace &amp; sizing</div>
+    <p class="sec-sub">Minimum clearspace = the height of the wordmark's "R". In product, the lockup sits at <b>48px</b> tall in the navbar and <b>40–47px</b> in the footer. Don't go below 32px tall — the arrow gets muddy.</p>
+    <div class="cs-stage">
+      <div class="ring"><img src="assets/logo.webp" alt="Realify"/></div>
+      <div class="cs-note">Dashed line shows the minimum clearspace. Pad equally on all four sides.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-h">Australia icon</div>
+    <p class="sec-sub">Rendered from <code>assets/australia-outline.png</code> via CSS mask so a single asset adopts any current-color context — amber for accent, navy for headers, white-on-navy for footers.</p>
+    <div class="grid3">
+      <div class="tile" style="flex-direction: column; gap: 14px; color: var(--amber);">
+        <span class="pill">Currentcolor · amber</span>
+        <span class="au md"></span>
+        <div class="meta">Eyebrow accent, map mark, "Australia-only" signal.</div>
+      </div>
+      <div class="tile dark" style="flex-direction: column; gap: 14px; color: white;">
+        <span class="pill">On navy · white</span>
+        <span class="au lg"></span>
+      </div>
+      <div class="tile" style="flex-direction: column; gap: 14px; color: var(--primary);">
+        <span class="pill">Inline use</span>
+        <div class="badge-pair"><span class="au"></span>Built for Australian agents</div>
+        <div class="meta">Pairs with copy at <code>20×18</code>.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-h">Icon library</div>
+    <p class="sec-sub">All icons come from <b>lucide-react</b> at the default 2px stroke, <code>currentColor</code> stroke, <code>round</code> caps and joins. UI sizing: <code>w-4 h-4</code> (16) inline, <code>w-5 h-5</code> (20) in nav, <code>w-6 h-6</code> (24) in feature blocks.</p>
+    <div class="ic-row">
+      <div class="ic-cell"><svg class="ic" viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5"/><path d="M5 9v11h14V9"/><path d="M10 20v-6h4v6"/></svg><div class="nm">home</div></div>
+      <div class="ic-cell"><svg class="ic" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.5 8.5 0 1 1 16.1-3.8z"/></svg><div class="nm">message</div></div>
+      <div class="ic-cell"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><div class="nm">calendar</div></div>
+      <div class="ic-cell"><svg class="ic" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.92.36 1.82.66 2.68a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.4-1.23a2 2 0 0 1 2.11-.45c.86.3 1.76.53 2.68.66A2 2 0 0 1 22 16.92z"/></svg><div class="nm">phone</div></div>
+      <div class="ic-cell"><svg class="ic" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><div class="nm">activity</div></div>
+      <div class="ic-cell"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><div class="nm">clock</div></div>
+      <div class="ic-cell"><svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><div class="nm">search</div></div>
+      <div class="ic-cell"><svg class="ic" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9"/><polyline points="3 4 3 12 11 12"/></svg><div class="nm">refresh</div></div>
+      <div class="ic-cell"><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg><div class="nm">arrow-right</div></div>
+      <div class="ic-cell"><svg class="ic" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><div class="nm">check</div></div>
+      <div class="ic-cell"><svg class="ic" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg><div class="nm">trending-up</div></div>
+      <div class="ic-cell"><svg class="ic" viewBox="0 0 24 24"><path d="M14 9V5a3 3 0 0 0-6 0v4"/><path d="M5 9h14l-1 11H6z"/></svg><div class="nm">handshake</div></div>
+      <div class="ic-cell"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg><div class="nm">play</div></div>
+      <div class="ic-cell"><svg class="ic" viewBox="0 0 24 24"><path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/><path d="M9 21V13h6v8"/></svg><div class="nm">rocket</div></div>
+      <div class="ic-cell"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22a8 8 0 0 1 16 0"/></svg><div class="nm">user</div></div>
+      <div class="ic-cell"><svg class="ic" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg><div class="nm">menu</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-h">Don'ts</div>
+    <p class="sec-sub">Three quick misuses to avoid.</p>
+    <div class="donts">
+      <div class="row">
+        <div class="cell stretch">
+          <span class="tag dont">Don't · stretch</span>
+          <div class="demo"><img src="assets/logo.webp" alt=""/></div>
+          <div class="what">Never distort the lockup vertically or horizontally.</div>
+        </div>
+        <div class="cell recolor">
+          <span class="tag dont">Don't · recolor</span>
+          <div class="demo"><img src="assets/logo.webp" alt=""/></div>
+          <div class="what">Don't shift the brand hues. Use the inverted lockup if you need a different background.</div>
+        </div>
+        <div class="cell">
+          <span class="tag dont">Don't · low contrast</span>
+          <div class="lowbg"><img src="assets/logo.webp" alt="" style="height: 40px;"/></div>
+          <div class="what">Don't place the primary lockup on amber. Use the inverted version instead.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
